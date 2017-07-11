@@ -2364,6 +2364,10 @@
                     "description": "phone_number",
                     "type": "string"
                 },
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
                 "teacher_id": {
                     "description": "teacher_id",
                     "type": "integer",

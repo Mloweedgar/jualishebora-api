@@ -21,6 +21,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
+ *          property="name",
+ *          description="name",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
  *          property="teacher_id",
  *          description="teacher_id",
  *          type="integer",
@@ -43,6 +48,7 @@ class Subscriber extends Model
 
     public $fillable = [
         'phone_number',
+        'name',
         'teacher_id'
     ];
 
@@ -54,6 +60,7 @@ class Subscriber extends Model
     protected $casts = [
         'id' => 'integer',
         'phone_number' => 'string',
+        'name' => 'string',
         'teacher_id' => 'integer'
     ];
 

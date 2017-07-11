@@ -12,6 +12,7 @@ class SubscriberRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'phone_number',
+        'name',
         'teacher_id'
     ];
 
