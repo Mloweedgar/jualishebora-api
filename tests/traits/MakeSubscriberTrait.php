@@ -43,6 +43,7 @@ trait MakeSubscriberTrait
 
         return array_merge([
             'phone_number' => $fake->word,
+            'name' => $fake->word,
             'teacher_id' => $fake->randomDigitNotNull,
             'created_at' => $fake->date('Y-m-d H:i:s'),
             'updated_at' => $fake->date('Y-m-d H:i:s'),

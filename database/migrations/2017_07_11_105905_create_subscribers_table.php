@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateSubscribersTable extends Migration
 {
     /**
@@ -16,16 +14,13 @@ class CreateSubscribersTable extends Migration
         Schema::create('subscribers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('phone_number');
+            $table->string('name');
             $table->integer('teacher_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
-
-
             $table->foreign('teacher_id')->references('id')->on('teachers');
-
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -36,8 +36,10 @@ Route::resource('posts', 'PostAPIController');
 
 Route::resource('comments', 'CommentAPIController');
 
-Route::resource('subscribers', 'SubscriberAPIController');
+
 
 Route::resource('darasas', 'DarasaAPIController');
 
 Route::resource('feedback', 'FeedbackAPIController');
+
+Route::resource('subscribers', 'SubscriberAPIController');
