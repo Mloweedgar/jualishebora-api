@@ -172,6 +172,7 @@ return [
         \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
         \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class, 
         Jlapp\Swaggervel\SwaggervelServiceProvider::class,
+	Barryvdh\Cors\ServiceProvider::class,
 
         //
 
