@@ -664,7 +664,7 @@
                 "laravel",
                 "templates"
             ],
-            "time": "2017-05-20 10:43:37"
+            "time": "2017-05-20T10:43:37+00:00"
         },
         {
             "name": "infyomlabs/laravel-generator",
@@ -723,7 +723,7 @@
                 "test",
                 "view"
             ],
-            "time": "2017-05-20 11:14:39"
+            "time": "2017-05-20T11:14:39+00:00"
         },
         {
             "name": "infyomlabs/swagger-generator",
@@ -760,7 +760,7 @@
                 "swagger",
                 "templates"
             ],
-            "time": "2016-02-14 10:41:03"
+            "time": "2016-02-14T10:41:03+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -950,7 +950,7 @@
                 "laravel",
                 "swagger"
             ],
-            "time": "2016-01-25 15:38:17"
+            "time": "2016-01-25T15:38:17+00:00"
         },
         {
             "name": "laracasts/flash",

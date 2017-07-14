@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -22,3 +22,39 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Teacher::class,function(Faker\Generator $faker){
+            static $password;
+
+            return [
+                'first_name' => $faker->lastName,
+                'middle_name' => $faker->lastName,
+                'last_name' => $faker->lastName,
+                'password' => $password ?: $password = bcrypt('secret'), 
+            ];
+});
+
+$factory->define(App\Models\Food::class,function (Faker\Generator $faker){
+            return [
+                'name' => $faker->word,
+                'food_type' =>$faker->word,
+                'teacher_id' => function(){
+                        return factory(App\Models\Teacher::class)->create()->id;
+                },
+            ];
+});
+
+$factory->define(App\Models\Topic::class,function (Faker\Generator $faker){
+            return [
+                'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+                'body' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+                'teacher_id' => function(){
+                    return factory(App\Models\Teacher::class)->create()->id;
+                },
+                'food_id' => function(){
+                    return factory(App\Models\Food::class)->create()->id;
+                },
+            ];
+});
+
+
