@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\DB;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -114,6 +115,76 @@ class PostAPIController extends AppBaseController
 
         return $this->sendResponse($posts->toArray(), 'Post saved successfully');
     }
+
+
+
+    /**
+     * @param string $title
+     * @return Response
+     *
+     * @SWG\Get(
+     *      path="/search/{title}",
+     *      summary="Display the specified Post",
+     *      tags={"Post"},
+     *      description="Get Post",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="title",
+     *          description="title of Post",
+     *          type="string",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/Post"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+    public function search(Request $request,$title=null)
+    {
+            if($title != null){
+                $posts = DB::select("
+                                SELECT p.*
+                                FROM posts as p 
+                                WHERE p.title LIKE '%$title%'
+                ");
+
+
+                return $this->sendResponse($posts,'Posts retrived successfully');
+            }
+
+
+        $this->postRepository->pushCriteria(new RequestCriteria($request));
+        $this->postRepository->pushCriteria(new LimitOffsetCriteria($request));
+        $posts = $this->postRepository->all();
+
+        return $this->sendResponse($posts->toArray(), 'Posts retrieved successfully');
+
+
+
+
+
+    }
+
+
+
+
 
     /**
      * @param int $id

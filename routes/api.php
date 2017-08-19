@@ -33,6 +33,7 @@ Route::resource('foods', 'FoodAPIController');
 Route::resource('topics', 'TopicAPIController');
 
 Route::resource('posts', 'PostAPIController');
+Route::get('search/{title?}','PostAPIController@search');
 
 Route::resource('comments', 'CommentAPIController');
 
