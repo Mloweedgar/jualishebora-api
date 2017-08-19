@@ -58,3 +58,14 @@ $factory->define(App\Models\Topic::class,function (Faker\Generator $faker){
 });
 
 
+$factory->define(App\Models\Post::class,function(Faker\Generator $faker){
+    return [
+        'title' => $faker->sentence,
+        'body'  => $faker->text,
+        'topic_id' => function(){
+        return factory(App\Models\Topic::class)->create()->id;
+        }
+    ];
+});
+
+
