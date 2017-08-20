@@ -19,11 +19,13 @@ class CreateTopicsTable extends Migration
             $table->text('body');
             $table->integer('teacher_id')->unsigned();
             $table->integer('food_id')->unsigned();
+            $table->integer('topic_category_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->foreign('food_id')->references('id')->on('foods');
+            $table->foreign('topic_category_id')->references('id')->on('topic_categories');
         });
     }
 

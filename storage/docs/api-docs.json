@@ -1837,6 +1837,245 @@
                 }
             }
         },
+        "/topicCategories": {
+            "get": {
+                "tags": [
+                    "TopicCategory"
+                ],
+                "summary": "Get a listing of the TopicCategories.",
+                "description": "Get all TopicCategories",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TopicCategory"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "TopicCategory"
+                ],
+                "summary": "Store a newly created TopicCategory in storage",
+                "description": "Store TopicCategory",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "TopicCategory that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/TopicCategory"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/TopicCategory"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/topicCategories/{id}": {
+            "get": {
+                "tags": [
+                    "TopicCategory"
+                ],
+                "summary": "Display the specified TopicCategory",
+                "description": "Get TopicCategory",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of TopicCategory",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/TopicCategory"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "TopicCategory"
+                ],
+                "summary": "Update the specified TopicCategory in storage",
+                "description": "Update TopicCategory",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of TopicCategory",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "TopicCategory that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/TopicCategory"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/TopicCategory"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "TopicCategory"
+                ],
+                "summary": "Remove the specified TopicCategory from storage",
+                "description": "Delete TopicCategory",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of TopicCategory",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/topicsByCategory/{id}": {
+            "get": {
+                "tags": [
+                    "TopicCategory"
+                ],
+                "summary": "Display all topics by category id",
+                "description": "Get topics by category id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of TopicCategory",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/TopicCategory"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "tags": [
@@ -2470,6 +2709,27 @@
                     "description": "food_id",
                     "type": "integer",
                     "format": "int32"
+                },
+                "topic_category_id": {
+                    "description": "topic_category_id",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "TopicCategory": {
+            "required": [
+                ""
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "category_name": {
+                    "description": "category_name",
+                    "type": "string"
                 }
             }
         },

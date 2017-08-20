@@ -44,6 +44,13 @@ $factory->define(App\Models\Food::class,function (Faker\Generator $faker){
             ];
 });
 
+$factory->define(App\Models\TopicCategory::class,function(Faker\Generator $faker){
+    return [
+        'category_name' => $faker->sentence
+    ];
+});
+
+
 $factory->define(App\Models\Topic::class,function (Faker\Generator $faker){
             return [
                 'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
@@ -54,6 +61,9 @@ $factory->define(App\Models\Topic::class,function (Faker\Generator $faker){
                 'food_id' => function(){
                     return factory(App\Models\Food::class)->create()->id;
                 },
+                'topic_category_id' => function(){
+                    return factory(App\Models\TopicCategory::class)->create()->id;
+                }
             ];
 });
 

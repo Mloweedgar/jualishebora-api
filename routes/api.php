@@ -44,3 +44,6 @@ Route::resource('darasas', 'DarasaAPIController');
 Route::resource('feedback', 'FeedbackAPIController');
 
 Route::resource('subscribers', 'SubscriberAPIController');
+
+Route::resource('topicCategories', 'TopicCategoryAPIController');
+Route::get('topicsByCategory/{id}','TopicCategoryAPIController@topicsByCategory');
