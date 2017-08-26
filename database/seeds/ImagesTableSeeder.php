@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class ImagesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(PostsTableSeeder::class);
-         $this->call(ImagesTableSeeder::class);
+        //
+        factory(App\Models\Image::class,10)->create();
     }
 }

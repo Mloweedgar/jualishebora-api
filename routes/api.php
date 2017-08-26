@@ -47,3 +47,8 @@ Route::resource('subscribers', 'SubscriberAPIController');
 
 Route::resource('topicCategories', 'TopicCategoryAPIController');
 Route::get('topicsByCategory/{id}','TopicCategoryAPIController@topicsByCategory');
+
+Route::resource('images', 'ImageAPIController');
+
+
+Route::post('avatar', 'ImageAPIController@upload');

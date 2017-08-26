@@ -67,6 +67,18 @@ $factory->define(App\Models\Topic::class,function (Faker\Generator $faker){
             ];
 });
 
+//Generatting fake data of Image table
+$factory->define(App\Models\Image::class, function (Faker\Generator $faker){
+    return [
+         'image_url'=>$faker->imageUrl($width = 640, $height = 480),
+         'teacher_id'=>function(){
+             return factory(App\Models\Teacher::class)->create()->id;
+         }
+
+    ];
+
+});
+
 
 $factory->define(App\Models\Post::class,function(Faker\Generator $faker){
     return [
