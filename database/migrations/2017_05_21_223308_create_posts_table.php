@@ -18,11 +18,13 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->integer('topic_id')->unsigned();
+            $table->integer('image_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
 
 
             $table->foreign('topic_id')->references('id')->on('topics');
+            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 

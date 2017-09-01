@@ -2842,6 +2842,11 @@
                     "description": "body",
                     "type": "string"
                 },
+                "image_id": {
+                    "description": "image_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
                 "topic_id": {
                     "description": "topic_id",
                     "type": "integer",

@@ -62,11 +62,13 @@ class PostAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->postRepository->pushCriteria(new RequestCriteria($request));
-        $this->postRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $posts = $this->postRepository->all();
+        $posts = DB::select("
+                                SELECT posts.*,images.image_url
+                                FROM posts
+                                LEFT JOIN images on posts.image_id = images.id"
+        );
 
-        return $this->sendResponse($posts->toArray(), 'Posts retrieved successfully');
+        return $this->sendResponse($posts, 'Posts retrieved successfully');
     }
 
     /**
@@ -226,14 +228,18 @@ class PostAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var Post $post */
-        $post = $this->postRepository->findWithoutFail($id);
+        $post = DB::select("
+                                SELECT posts.*,images.image_url
+                                FROM posts
+                                LEFT JOIN images on posts.image_id = images.id
+                                WHERE posts.id = $id"
+        );
 
         if (empty($post)) {
             return $this->sendError('Post not found');
         }
 
-        return $this->sendResponse($post->toArray(), 'Post retrieved successfully');
+        return $this->sendResponse($post, 'Post retrieved successfully');
     }
 
     /**

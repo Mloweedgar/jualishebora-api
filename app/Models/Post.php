@@ -26,6 +26,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
+ *          property="image_id",
+ *          description="image_id",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *      @SWG\Property(
  *          property="topic_id",
  *          description="topic_id",
  *          type="integer",
@@ -49,7 +55,8 @@ class Post extends Model
     public $fillable = [
         'title',
         'body',
-        'topic_id'
+        'topic_id',
+        'image_id'
     ];
 
     /**
@@ -61,7 +68,8 @@ class Post extends Model
         'id' => 'integer',
         'title' => 'string',
         'body' => 'string',
-        'topic_id' => 'integer'
+        'topic_id' => 'integer',
+        'image_id' => 'integer'
     ];
 
     /**
