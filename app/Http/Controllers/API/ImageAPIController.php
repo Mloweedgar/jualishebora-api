@@ -8,6 +8,9 @@ use App\Models\Image;
 use App\Repositories\ImageRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -16,7 +19,6 @@ use Response;
  * Class ImageController
  * @package App\Http\Controllers\API
  */
-
 class ImageAPIController extends AppBaseController
 {
     /** @var  ImageRepository */
@@ -106,14 +108,19 @@ class ImageAPIController extends AppBaseController
      *      )
      * )
      */
-    public function store(CreateImageAPIRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
 
-        $images = $this->imageRepository->create($input);
+        $url = URL::to('/').'/storage/images/'.$request->avatar->hashName();
+        $request->avatar->store('images','public');
+        $image = new Image();
+        $image->teacher_id = 1;
+        $image->image_url = $url;
+        $image->save();
+        echo $url;
 
-        return $this->sendResponse($images->toArray(), 'Image saved successfully');
     }
+
 
     /**
      * @param int $id
@@ -227,57 +234,6 @@ class ImageAPIController extends AppBaseController
         return $this->sendResponse($image->toArray(), 'Image updated successfully');
     }
 
-    /**
-     * @param int $id
-     * @param UploadImageAPIRequest $request
-     * @return Response
-     *
-     * @SWG\Put(
-     *      path="/images/{id}",
-     *      summary="Upload the specified Image in storage",
-     *      tags={"Image"},
-     *      description="Upload Image",
-     *      produces={"application/json"},
-     *      @SWG\Parameter(
-     *          name="id",
-     *          description="Image",
-     *          type="string",
-     *          required=true,
-     *          in="path"
-     *      ),
-     *      @SWG\Parameter(
-     *          name="body",
-     *          in="body",
-     *          description="Image that should be uploaded",
-     *          required=false,
-     *          @SWG\Schema(ref="#/definitions/Image")
-     *      ),
-     *      @SWG\Response(
-     *          response=200,
-     *          description="successful operation",
-     *          @SWG\Schema(
-     *              type="object",
-     *              @SWG\Property(
-     *                  property="success",
-     *                  type="boolean"
-     *              ),
-     *              @SWG\Property(
-     *                  property="data",
-     *                  ref="#/definitions/Image"
-     *              ),
-     *              @SWG\Property(
-     *                  property="message",
-     *                  type="string"
-     *              )
-     *          )
-     *      )
-     * )
-     */
-    public function upload()
-    {
-
-        request()->file('avatar')->store('avatars');
-    }
 
     /**
      * @param int $id

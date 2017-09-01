@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 
-Route::post('avatars', 'ImageAPIController@upload');
+Route::post('avatars', 'ImageAPIController@store');
