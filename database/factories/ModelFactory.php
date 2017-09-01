@@ -63,6 +63,9 @@ $factory->define(App\Models\Topic::class,function (Faker\Generator $faker){
                 },
                 'topic_category_id' => function(){
                     return factory(App\Models\TopicCategory::class)->create()->id;
+                },
+                'image_id' => function(){
+                    return factory(App\Models\Image::class)->create()->id;
                 }
             ];
 });
@@ -86,6 +89,9 @@ $factory->define(App\Models\Post::class,function(Faker\Generator $faker){
         'body'  => $faker->text,
         'topic_id' => function(){
         return factory(App\Models\Topic::class)->create()->id;
+        },
+        'image_id' => function(){
+            return factory(App\Models\Image::class)->create()->id;
         }
     ];
 });
