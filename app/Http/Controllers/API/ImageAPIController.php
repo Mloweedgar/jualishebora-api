@@ -117,7 +117,7 @@ class ImageAPIController extends AppBaseController
         $image->teacher_id = 1;
         $image->image_url = $url;
         $image->save();
-        echo $url;
+        return $this->sendResponse($image->toArray(), 'Image saved successfully');
 
     }
 

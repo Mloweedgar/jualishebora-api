@@ -42,6 +42,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          description="topic_category_id",
  *          type="integer",
  *          format="int32"
+ *      ),
+ *     @SWG\Property(
+ *          property="image_id",
+ *          description="image_id",
+ *          type="integer",
+ *          format="int32"
  *      )
  * )
  */
@@ -63,7 +69,8 @@ class Topic extends Model
         'body',
         'teacher_id',
         'topic_category_id',
-        'food_id'
+        'food_id',
+        'image_id'
     ];
 
     /**
@@ -77,7 +84,8 @@ class Topic extends Model
         'body' => 'string',
         'teacher_id' => 'integer',
         'food_id' => 'integer',
-        'topic_category_id' => 'integer'
+        'topic_category_id' => 'integer',
+        'image_id' => 'integer'
     ];
 
     /**

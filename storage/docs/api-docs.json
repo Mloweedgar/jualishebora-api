@@ -2934,6 +2934,11 @@
                     "description": "topic_category_id",
                     "type": "integer",
                     "format": "int32"
+                },
+                "image_id": {
+                    "description": "image_id",
+                    "type": "integer",
+                    "format": "int32"
                 }
             }
         },

@@ -8,6 +8,7 @@ use App\Models\Topic;
 use App\Repositories\TopicRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\DB;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
@@ -61,11 +62,13 @@ class TopicAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->topicRepository->pushCriteria(new RequestCriteria($request));
-        $this->topicRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $topics = $this->topicRepository->all();
+            $topics = DB::select("
+                                SELECT topics.*,images.image_url
+                                FROM topics
+                                LEFT JOIN images on topics.image_id = images.id"
+                                );
 
-        return $this->sendResponse($topics->toArray(), 'Topics retrieved successfully');
+        return $this->sendResponse($topics, 'Topics retrieved successfully');
     }
 
     /**
@@ -156,13 +159,18 @@ class TopicAPIController extends AppBaseController
     public function show($id)
     {
         /** @var Topic $topic */
-        $topic = $this->topicRepository->findWithoutFail($id);
+        $topic = DB::select("
+                                SELECT topics.*,images.image_url
+                                FROM topics
+                                LEFT JOIN images on topics.image_id = images.id
+                                WHERE topics.id = $id"
+        );
 
         if (empty($topic)) {
             return $this->sendError('Topic not found');
         }
 
-        return $this->sendResponse($topic->toArray(), 'Topic retrieved successfully');
+        return $this->sendResponse($topic, 'Topic retrieved successfully');
     }
 
     /**
