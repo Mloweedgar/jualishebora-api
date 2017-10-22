@@ -111,8 +111,8 @@ class ImageAPIController extends AppBaseController
     public function store(Request $request)
     {
 
-        $url = URL::to('/').'/storage/images/'.$request->avatar->hashName();
-        $request->avatar->store('images','public');
+        $url = URL::to('/').'/storage/images/'.$request->image->hashName();
+        $request->image->store('images','public');
         $image = new Image();
         $image->teacher_id = 1;
         $image->image_url = $url;
