@@ -21,6 +21,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
+ *          property="video_url",
+ *          description="video_url",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="audio_url",
+ *          description="audio_url",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
  *          property="body",
  *          description="body",
  *          type="string"
@@ -56,7 +66,9 @@ class Post extends Model
         'title',
         'body',
         'topic_id',
-        'image_id'
+        'image_id',
+        'video_url',
+        'audio_url'
     ];
 
     /**
@@ -69,7 +81,10 @@ class Post extends Model
         'title' => 'string',
         'body' => 'string',
         'topic_id' => 'integer',
-        'image_id' => 'integer'
+        'image_id' => 'integer',
+        'audio_url' => 'string',
+        'video_url' => 'string',
+
     ];
 
     /**
