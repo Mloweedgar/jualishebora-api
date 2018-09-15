@@ -66,7 +66,7 @@ class Subscriber extends Model
         'id' => 'integer',
         'phone_number' => 'string',
         'name' => 'string',
-        'surname' => 'integer',
+        'surname' => 'string',
         'status' => 'boolean'
     ];
 
