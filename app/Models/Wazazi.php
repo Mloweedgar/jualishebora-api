@@ -32,6 +32,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
+ *          property="status",
+ *          description="status",
+ *          type="boolean"
+ *      ),
+ *      @SWG\Property(
  *          property="childs_age",
  *          description="childs_age",
  *          type="integer"
@@ -53,7 +58,8 @@ class Wazazi extends Model
         'phone_number',
         'first_name',
         'surname',
-        'childs_age'
+        'childs_age',
+        'status'
     ];
 
     /**
@@ -67,7 +73,8 @@ class Wazazi extends Model
         'childs_age' => 'string',
         'phone_number' => 'string',
         'first_name' => 'string',
-        'surname' => 'string'
+        'surname' => 'string',
+        'status' => 'boolean'
     ];
 
     /**

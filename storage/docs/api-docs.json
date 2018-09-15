@@ -2872,10 +2872,13 @@
                     "description": "name",
                     "type": "string"
                 },
-                "teacher_id": {
-                    "description": "teacher_id",
-                    "type": "integer",
-                    "format": "int32"
+                "status": {
+                    "description": "status",
+                    "type": "boolean"
+                },
+                "surname": {
+                    "description": "surname",
+                    "type": "string"
                 }
             }
         },
@@ -3012,6 +3015,10 @@
                 "surname": {
                     "description": "surname",
                     "type": "string"
+                },
+                "status": {
+                    "description": "status",
+                    "type": "boolean"
                 },
                 "childs_age": {
                     "description": "childs_age",

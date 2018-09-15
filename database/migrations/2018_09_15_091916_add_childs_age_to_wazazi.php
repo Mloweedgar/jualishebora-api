@@ -19,6 +19,7 @@ class AddChildsAgeToWazazi extends Migration
             $table->renameColumn('middle_name', 'surname');
             $table->dropColumn('last_name');
             $table->integer('childs_age');
+            $table->boolean('status')->default(true);
         });
 
     }
@@ -35,6 +36,7 @@ class AddChildsAgeToWazazi extends Migration
             $table->renameColumn('surname', 'middle_name');
             $table->dropColumn('childs_age');
             $table->integer('last_name');
+            $table->dropColumn('status');
         });
     }
 }
