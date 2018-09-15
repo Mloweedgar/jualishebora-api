@@ -3001,11 +3001,6 @@
                     "type": "integer",
                     "format": "int32"
                 },
-                "childs_id": {
-                    "description": "childs_id",
-                    "type": "integer",
-                    "format": "int32"
-                },
                 "phone_number": {
                     "description": "phone_number",
                     "type": "string"
@@ -3014,13 +3009,13 @@
                     "description": "first_name",
                     "type": "string"
                 },
-                "middle_name": {
-                    "description": "middle_name",
+                "surname": {
+                    "description": "surname",
                     "type": "string"
                 },
-                "last_name": {
-                    "description": "last_name",
-                    "type": "string"
+                "childs_age": {
+                    "description": "childs_age",
+                    "type": "integer"
                 }
             }
         }

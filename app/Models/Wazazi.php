@@ -15,12 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="integer",
  *          format="int32"
  *      ),
- *      @SWG\Property(
- *          property="childs_id",
- *          description="childs_id",
- *          type="integer",
- *          format="int32"
- *      ),
+
  *      @SWG\Property(
  *          property="phone_number",
  *          description="phone_number",
@@ -32,14 +27,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="middle_name",
- *          description="middle_name",
+ *          property="surname",
+ *          description="surname",
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="last_name",
- *          description="last_name",
- *          type="string"
+ *          property="childs_age",
+ *          description="childs_age",
+ *          type="integer"
  *      )
  * )
  */
@@ -54,14 +49,11 @@ class Wazazi extends Model
 
 
     protected $dates = ['deleted_at'];
-
-
     public $fillable = [
-        'childs_id',
         'phone_number',
         'first_name',
-        'middle_name',
-        'last_name'
+        'surname',
+        'childs_age'
     ];
 
     /**
@@ -72,10 +64,10 @@ class Wazazi extends Model
     protected $casts = [
         'id' => 'integer',
         'childs_id' => 'integer',
+        'childs_age' => 'string',
         'phone_number' => 'string',
         'first_name' => 'string',
-        'middle_name' => 'string',
-        'last_name' => 'string'
+        'surname' => 'string'
     ];
 
     /**
