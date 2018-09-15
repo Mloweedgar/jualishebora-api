@@ -16,8 +16,8 @@ class AddUrlsToPosts extends Migration
         //
 
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('video_url');
-            $table->string('audio_url');
+            $table->string('video_url')->nullable();
+            $table->string('audio_url')->nullable();
         });
     }
 
@@ -29,5 +29,10 @@ class AddUrlsToPosts extends Migration
     public function down()
     {
         //
+
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('video_url');
+            $table->dropColumn('audio_url');
+        });
     }
 }
