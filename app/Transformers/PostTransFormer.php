@@ -19,7 +19,10 @@ class PostTransFormer extends Fractal\TransformerAbstract
         return [
             'id' => (int) $post->id,
             'title' => $post->title,
-            'body' => $post->body
+            'body' => $post->body,
+            'video_url' => $post->video_url,
+            'audio_url' => $post->audio_url,
+            'created_at' => $post->created_at->toDateTimeString(),
         ];
 
     }
