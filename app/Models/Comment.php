@@ -21,6 +21,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          type="string"
  *      ),
  *      @SWG\Property(
+ *          property="phone_number",
+ *          description="phone_number",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="name",
+ *          description="name",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
  *          property="parent_id",
  *          description="parent_id",
  *          type="integer",
@@ -50,6 +60,8 @@ class Comment extends Model
     public $fillable = [
         'body',
         'parent_id',
+        'phone_number',
+        'name',
         'post_id'
     ];
 
@@ -62,7 +74,9 @@ class Comment extends Model
         'id' => 'integer',
         'body' => 'string',
         'parent_id' => 'integer',
-        'post_id' => 'integer'
+        'post_id' => 'integer',
+        'phone_number' => 'string',
+        'name' => 'string'
     ];
 
     /**
