@@ -52,3 +52,5 @@ Route::resource('images', 'ImageAPIController');
 
 
 Route::post('avatar', 'ImageAPIController@upload');
+
+Route::resource('products', 'ProductAPIController');
