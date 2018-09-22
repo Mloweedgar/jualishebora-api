@@ -9,8 +9,11 @@ use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
+use App\Serializers\JsonSerializer;
+use App\Transformers\PostTransFormer;
 use Response;
 
 /**
@@ -62,13 +65,14 @@ class PostAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $posts = DB::select("
-                                SELECT posts.*,images.image_url
-                                FROM posts
-                                LEFT JOIN images on posts.image_id = images.id"
-        );
+        $posts = Post::all();
+        $transformedPosts = fractal()
+            ->collection($posts)
+            ->transformWith(new PostTransFormer())
+            ->serializeWith(new JsonSerializer())
+            ->toArray();
 
-        return $this->sendResponse($posts, 'Posts retrieved successfully');
+        return $this->sendResponse($transformedPosts, 'Posts retrieved successfully');
     }
 
     /**
@@ -160,23 +164,30 @@ class PostAPIController extends AppBaseController
      */
     public function search(Request $request,$title=null)
     {
+
             if($title != null){
-                $posts = DB::select("
-                                SELECT p.*
-                                FROM posts as p 
-                                WHERE p.title LIKE '%$title%'
-                ");
+                $posts = Post::where('title', 'like', '%' . $title . '%')->get();
 
 
                 return $this->sendResponse($posts,'Posts retrived successfully');
             }
+            else {
+                $this->postRepository->pushCriteria(new RequestCriteria($request));
+                $this->postRepository->pushCriteria(new LimitOffsetCriteria($request));
+                $posts = $this->postRepository->all();
+
+            }
 
 
-        $this->postRepository->pushCriteria(new RequestCriteria($request));
-        $this->postRepository->pushCriteria(new LimitOffsetCriteria($request));
-        $posts = $this->postRepository->all();
 
-        return $this->sendResponse($posts->toArray(), 'Posts retrieved successfully');
+
+        $transformedPosts = fractal()
+            ->collection($posts)
+            ->transformWith(new PostTransFormer())
+            ->serializeWith(new JsonSerializer())
+            ->toArray();
+
+        return $this->sendResponse($transformedPosts, 'Posts retrieved successfully');
 
 
 

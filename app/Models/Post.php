@@ -89,6 +89,11 @@ class Post extends Model
         return $this->belongsTo(\App\Models\Topic::class);
     }
 
+    public function image()
+    {
+        return $this->belongsTo(\App\Models\Image::class);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/

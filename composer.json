@@ -13,7 +13,8 @@
         "infyomlabs/swagger-generator": "dev-master",
         "jlapp/swaggervel": "dev-master",
         "laravel/framework": "5.3.*",
-        "laravelcollective/html": "^5.3.0"
+        "laravelcollective/html": "^5.3.0",
+        "spatie/laravel-fractal": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -32,7 +33,8 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "tests/TestCase.php",
+            "app/Transformers"
         ]
     },
     "scripts": {
