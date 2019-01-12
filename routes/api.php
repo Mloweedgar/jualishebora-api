@@ -65,3 +65,6 @@ Route::get('productsByCategory/{id}','productsCategoryAPIController@productsByCa
 
 Route::resource('products', 'ProductsAPIController');
 
+Route::resource('audio', 'audioAPIController'); 
+
+Route::resource('orders', 'OrderAPIController');
