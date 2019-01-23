@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @SWG\Definition(
- *      definition="User",
+ *      definition="audio",
  *      required={""},
  *      @SWG\Property(
  *          property="id",
@@ -16,37 +16,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="name",
- *          description="name",
+ *          property="audio_url",
+ *          description="audio_url",
  *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="email",
- *          description="email",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="password",
- *          description="password",
- *          type="string"
- *      ),
- *     
+ *      )
  * )
  */
-
-
-//   SWG\Property(
-//               property="remember_token",
-//               description="remember_token",
-//               type="string"
-//           )
-
-
-class User extends Model
+class audio extends Model
 {
     use SoftDeletes;
 
-    public $table = 'users';
+    public $table = 'audios';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -56,10 +36,7 @@ class User extends Model
 
 
     public $fillable = [
-        'name',
-        'email',
-        'password',
-       // 'remember_token'
+        'audio_url'
     ];
 
     /**
@@ -69,10 +46,7 @@ class User extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string',
-        'email' => 'string',
-        'password' => 'string',
-       // 'remember_token' => 'string'
+        'audio_url' => 'string'
     ];
 
     /**

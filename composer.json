@@ -14,7 +14,9 @@
         "jlapp/swaggervel": "dev-master",
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "^5.3.0",
-        "spatie/laravel-fractal": "^4.0"
+        "spatie/laravel-fractal": "^4.0",
+        "tymon/jwt-auth": "0.5.*",
+        "zircote/swagger-php": "2.0.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

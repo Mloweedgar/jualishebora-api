@@ -22,6 +22,10 @@ Route::get('/user', function (Request $request) {
 
 Route::resource('users', 'UserAPIController');
 
+Route::post('users/signup', 'UserAPIController@signup');
+
+Route::post('users/signin', 'UserAPIController@signin');
+
 Route::resource('passwordRessets', 'PasswordRessetAPIController');
 
 Route::resource('teachers', 'TeacherAPIController');
@@ -53,4 +57,14 @@ Route::resource('images', 'ImageAPIController');
 
 Route::post('avatar', 'ImageAPIController@upload');
 
-Route::resource('products', 'ProductAPIController');
+
+
+Route::resource('productsCategories', 'productsCategoryAPIController');  
+
+Route::get('productsByCategory/{id}','productsCategoryAPIController@productsByCategory');
+
+Route::resource('products', 'ProductsAPIController');
+
+Route::resource('audio', 'audioAPIController'); 
+
+Route::resource('orders', 'OrderAPIController');

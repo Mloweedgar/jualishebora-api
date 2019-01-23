@@ -2,8 +2,9 @@
 
 namespace App\Transformers;
 
-use App\Models\Product;
+//use App\Models\Products;
 use League\Fractal;
+use App\Models\Products;
 
 class ProductTransformer extends Fractal\TransformerAbstract
 {
@@ -12,8 +13,15 @@ class ProductTransformer extends Fractal\TransformerAbstract
         'image'
     ];
 
+    /**
+     *  @param Products $product
+     * 
+     * 
+     */
+   
 
-    public function transform( Product $product)
+
+    public function transform(Products $product)
     {
 
         return [
@@ -26,7 +34,7 @@ class ProductTransformer extends Fractal\TransformerAbstract
 
     }
 
-    public function includeImage(Product $product)
+    public function includeImage(Products $product)
     {
         $image = $product->image;
 
